@@ -1,5 +1,6 @@
 package com.proba.proba12.models;
 
+import com.proba.proba12.core.BaseEntity;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -7,11 +8,12 @@ import javax.persistence.*;
 @Data
 @Entity
 @Table(name = "user")
-public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO,generator = "native")
-    @Column(name = "user_id")
-    private Long id;
+@AttributeOverride(name = "id" ,column = @Column(name = "user_id"))
+public class User extends BaseEntity {
+
+    public User(){
+        super();
+    }
 
     private String name;
     private String username;
